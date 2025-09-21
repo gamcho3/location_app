@@ -1,0 +1,90 @@
+#map-container {
+  width: 500px;
+  height: 400px;
+  position: relative;
+}
+
+/* 사이드메뉴 스타일 */
+.side-menu {
+  position: absolute;
+  top: 0;
+  display: none;
+  width: 300px;
+  height: 100%;
+  background: white;
+  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+  transition: right 0.3s ease;
+  z-index: 1000;
+  /* 확실히 숨기기 위해 추가 */
+  visibility: hidden;
+  opacity: 0;
+}
+
+.side-menu.open {
+  right: 0;
+  visibility: visible;
+  opacity: 1;
+}
+
+.menu-header {
+  padding: 20px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.menu-content {
+  padding: 20px;
+  height: calc(100% - 140px);
+  overflow-y: auto;
+}
+
+.location-list {
+  min-height: 100px;
+}
+
+.menu-footer {
+  padding: 20px;
+  border-top: 1px solid #eee;
+}
+
+.save-button {
+  width: 100%;
+  padding: 10px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  background: #0056b3;
+}
+
+.hamburger-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: white;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  z-index: 1001;
+}
