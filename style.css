@@ -1,90 +1,166 @@
-#map-container {
-  width: 500px;
-  height: 400px;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 320px;
+  height: 480px;
+  background: #f8fafc;
+}
+
+.weather-app {
+  width: 100%;
+  height: 100%;
+  background: white;
+  display: flex;
+  flex-direction: column;
   position: relative;
 }
 
-/* 사이드메뉴 스타일 */
-.side-menu {
-  position: absolute;
-  top: 0;
-  display: none;
-  width: 300px;
-  height: 100%;
-  background: white;
-  box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
-  transition: right 0.3s ease;
-  z-index: 1000;
-  /* 확실히 숨기기 위해 추가 */
-  visibility: hidden;
-  opacity: 0;
-}
-
-.side-menu.open {
-  right: 0;
-  visibility: visible;
-  opacity: 1;
-}
-
-.menu-header {
-  padding: 20px;
-  border-bottom: 1px solid #eee;
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 20px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
 }
 
-.menu-header h3 {
-  margin: 0;
+.header h1 {
   font-size: 18px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
 }
 
-.close-btn {
-  background: none;
-  border: none;
-  font-size: 16px;
+.header img {
+  width: 20px;
+  height: 20px;
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
   cursor: pointer;
-  padding: 5px;
+  transition: opacity 0.2s;
 }
 
-.menu-content {
-  padding: 20px;
-  height: calc(100% - 140px);
-  overflow-y: auto;
+.header img:hover {
+  opacity: 1;
 }
 
-.location-list {
-  min-height: 100px;
+.main-content {
+  flex: 1;
+  padding: 16px;
 }
 
-.menu-footer {
-  padding: 20px;
-  border-top: 1px solid #eee;
+.main-content ul {
+  list-style: none;
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
 }
 
-.save-button {
-  width: 100%;
-  padding: 10px;
-  background: #007bff;
+.main-content li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  transition: all 0.2s;
+}
+
+.main-content p {
+  font-size: 14px;
+  color: #334155;
+  flex: 1;
+  line-height: 1.5;
+}
+
+.main-content button {
+  background: #ef4444;
   color: white;
   border: none;
-  border-radius: 4px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 500;
   cursor: pointer;
+  transition: background 0.2s;
 }
 
-.save-button:hover {
-  background: #0056b3;
+.main-content button:hover {
+  background: #dc2626;
 }
 
-.hamburger-btn {
+.add-btn {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background: white;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   border: none;
-  padding: 10px;
-  border-radius: 4px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: white;
+  font-size: 24px;
   cursor: pointer;
-  z-index: 1001;
+}
+
+dialog {
+  border: none;
+  border-radius: 16px;
+  padding: 24px;
+  width: 300px;
+  max-width: 90vw;
+  background: white;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+}
+
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(4px);
+}
+
+dialog form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+dialog textarea {
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  font-size: 14px;
+  font-family: inherit;
+  min-height: 100px;
+  resize: vertical;
+  transition: border-color 0.2s;
+}
+
+dialog textarea:focus {
+  outline: none;
+  border-color: #667eea;
+}
+
+dialog textarea::placeholder {
+  color: #94a3b8;
+}
+
+dialog button {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  padding: 14px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
 }

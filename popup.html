@@ -1,82 +1,37 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>위치기반앱</title>
+    <title>개인화 한줄 일기</title>
     <link rel="stylesheet" href="style.css" />
-    <!-- fontawesome 아이콘 설치 -->
-    <script
-      src="https://kit.fontawesome.com/7ab92cd7d8.js"
-      crossorigin="anonymous"
-    ></script>
+    <script src="jquery-3.7.1.js"></script>
+    <script src="dayjs.min.js"></script>
   </head>
   <body>
-    <div id="map-container">
-      <div id="map" style="width: 500px; height: 400px"></div>
+    <div class="weather-app">
+      <header class="header">
+        <h1>날씨기반 한줄일기</h1>
 
-      <!-- 햄버거 메뉴 버튼 (우측상단) -->
-      <div id="hamburger-menu" class="hamburger-btn">
-        <i class="fa-solid fa-bars"></i>
-      </div>
+        <img src="/image/ellipsis-vertical.svg" alt="" />
+      </header>
 
-      <!-- 사이드 메뉴 -->
-      <div id="side-menu" class="side-menu">
-        <div class="menu-header">
-          <h3>저장된 위치</h3>
-          <button id="close-menu" class="close-btn">
-            <i class="fa-solid fa-times"></i>
-          </button>
-        </div>
-        <div class="menu-content">
-          <div id="location-list" class="location-list">
-            <p>저장된 위치가 없습니다.</p>
-          </div>
-        </div>
-        <div class="menu-footer">
-          <button class="save-button">위치 등록</button>
-        </div>
-      </div>
+      <main class="main-content">
+        <ul class="diary-list">
+          <li>
+            <p>250923 오늘의 공부 맑음 23도</p>
+            <button>삭제</button>
+          </li>
+        </ul>
+      </main>
+      <button class="add-btn">+</button>
+      <dialog id="modal">
+        <form method="dialog">
+          <textarea placeholder="오늘의 한줄일기를 기록하세요..."></textarea>
+          <button type="submit">저장</button>
+        </form>
+      </dialog>
     </div>
-
-    <script
-      type="text/javascript"
-      src="//dapi.kakao.com/v2/maps/sdk.js?appkey=e8b07775c6893c65166dea7b59c8aa14"
-    ></script>
-    <script>
-      // 1. 현재 위치정보 가져오기
-
-      function initMap(lat, lng) {
-        let container = document.getElementById("map");
-
-        console.log(lat, lng);
-        let options = {
-          center: new kakao.maps.LatLng(lat, lng),
-          level: 3,
-        };
-
-        var map = new kakao.maps.Map(container, options);
-
-        // 현재위치 마커
-        var marker = new kakao.maps.Marker({
-          map: map,
-          position: new kakao.maps.LatLng(lat, lng),
-        });
-        kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-          let latlng = mouseEvent.latLng;
-          console.log("클릭", latlng);
-          // 마커 위치를 클릭한 위치로 옮깁니다
-          marker.setPosition(latlng);
-        });
-      }
-
-      // 현재위치정보 받기
-      navigator.geolocation.getCurrentPosition(function (position) {
-        lat = position.coords.latitude;
-        lng = position.coords.longitude;
-        // 2. 카카오 지도 표시
-        initMap(lat, lng);
-      });
-    </script>
+    <script src="content.js"></script>
   </body>
 </html>

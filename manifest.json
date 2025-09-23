@@ -1,19 +1,18 @@
 {
   "manifest_version": 3,
-  "name": "위치기반 메모 앱",
+  "name": "위치기반 날씨 메모 앱",
   "version": "1.0.0",
-  "description": "카카오 지도를 사용한 위치 기록 앱",
+  "description": "날씨기반 위치 기록 앱",
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["jquery-3.7.1.js", "dayjs.min.js", "content.js"]
+    }
+  ],
   "permissions": ["geolocation", "storage"],
-  "host_permissions": ["https://dapi.kakao.com/*"],
-  "content_security_policy": {
-    "extension_pages": "script-src 'self' https://dapi.kakao.com; object-src 'self'"
-  },
+
   "action": {
     "default_popup": "popup.html",
     "default_title": "위치 기록"
-  },
-  "icons": {
-    "48": "images/icon-48.png",
-    "128": "images/icon-128.png"
   }
 }
