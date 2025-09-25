@@ -87,9 +87,10 @@ $(function () {
     };
 
     // 2. 리스트에 추가하기
-    const $li = $("<li>")
-      .text(`${formatDate} ${diaryText}`)
-      .attr("id", newDiary.id);
+    const $li = $("<li>").attr("id", newDiary.id);
+
+    const $p = $("<p>").text(`${formatDate} ${diaryText}`);
+
     const $removeBtn = $("<button>")
       .text("삭제")
       .on("click", function () {
@@ -107,7 +108,8 @@ $(function () {
           console.log("로컬스토리지에 저장 완료");
         });
       });
-    // li 요소에 버튼 추가
+    // li 요소에 내용, 버튼 추가
+    $li.append($p);
     $li.append($removeBtn);
     // ul 요소에 li 추가
     $(".diary-list").append($li);
